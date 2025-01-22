@@ -16,7 +16,7 @@ const eslintConfig = [
     prettierConfig,
     {
         rules: {
-            indent: ["error", 4]
+            indent: off
         },
     }
 ];
