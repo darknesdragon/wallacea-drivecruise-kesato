@@ -39,3 +39,13 @@
 
 
 // export default StaticApiPage;
+
+const testing = () => {
+    return (
+        <div className="container">
+            testing
+        </div>
+    )
+}
+
+export default testing
