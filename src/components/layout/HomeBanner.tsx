@@ -7,17 +7,17 @@ import gsap from 'gsap';
 
 import "@styles/components/layout/_HomeBanner.scss";
 
-const bannerData = {
-    video_url: 'https://www.youtube.com/embed/CVCEDLssMUA?si=-wH_Jvbw1Js18BIr',
-    title: 'Premier Diving Liveaboards',
-    desc: 'Wallacea Dive Cruises is an Indonesian liveaboard operator'
+type HomeBannerProps = {
+    video_url: string;
+    title: string;
+    desc: string;
 }
 
-const videoID = bannerData.video_url.split('embed/')[1].split('?')[0];
-const videoThumbnail = 'https://img.youtube.com/vi/' + videoID + '/hqdefault.jpg';
-const videoEmbedUrl= 'https://www.youtube.com/embed/' + videoID + '?&autoplay=1&loop=1&mute=1&rel=0';
+const HomeBanner = ({video_url, title, desc} : HomeBannerProps) => {
 
-const HomeBanner = () => {
+    const videoID = video_url.split('embed/')[1].split('?')[0];
+    const videoThumbnail = 'https://img.youtube.com/vi/' + videoID + '/hqdefault.jpg';
+    const videoEmbedUrl= 'https://www.youtube.com/embed/' + videoID + '?&autoplay=1&loop=1&mute=1&rel=0';
 
     const [windowLoad, setWindowLoad] = useState(false);
     const bannerContent = () => {
@@ -27,7 +27,7 @@ const HomeBanner = () => {
             )
         } else {
             return (
-                <Image src={videoThumbnail} alt={`${bannerData.title} video thumbnail`} className="ratio-item" width={1920} height={1080} />
+                <Image src={videoThumbnail} alt={`${title} video thumbnail`} className="ratio-item" width={1920} height={1080} />
             )
         }
     }
@@ -53,10 +53,10 @@ const HomeBanner = () => {
                 <div className="home-banner__text-container">
                     <div className="container">
                         <h1 className="home-banner__title">
-                            Premier Diving Liveaboards
+                            {title}
                         </h1>
                         <p className="home-banner__desc">
-                            Wallacea Dive Cruises is an Indonesian liveaboard operator
+                            {desc}
                         </p>
                     </div>
                 </div>

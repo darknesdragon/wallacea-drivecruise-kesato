@@ -15,6 +15,12 @@ import "@styles/pages/home.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const bannerData = {
+    video_url: 'https://www.youtube.com/embed/CVCEDLssMUA?si=-wH_Jvbw1Js18BIr',
+    title: 'Premier Diving Liveaboards',
+    desc: 'Wallacea Dive Cruises is an Indonesian liveaboard operator'
+}
+
 const boatData = [
     {
         title: 'Msy Seashore',
@@ -232,7 +238,7 @@ const Testing = () => {
 
     return (
         <div className="page-banner">
-            <HomeBanner />
+            <HomeBanner video_url={bannerData.video_url} title={bannerData.title} desc={bannerData.desc} />
             <section className="home-section">
                 <div className="container">
                     <h2 className="home-section__title">
