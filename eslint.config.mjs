@@ -16,7 +16,7 @@ const eslintConfig = [
     prettierConfig,
     {
         rules: {
-            indent: off
+            indent: 'off'
         },
     }
 ];
