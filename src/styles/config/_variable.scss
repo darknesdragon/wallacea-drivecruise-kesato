@@ -1,0 +1,298 @@
+@use 'sass:map';
+@use 'sass:math';
+
+// |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾| //
+// | tmdrVar v.1.0.2                         | //
+// | last update : 03 / 04 / 2024            | //
+// |_________________________________________| //
+
+$themeUnit: 'vw';
+
+$desktopBreakpoints: (
+    1440,
+    1199,
+);
+
+$mobileBreakpoints: (
+    991,
+    767,
+    480,
+    390
+);
+
+// color example taken from Timedoor - Prime Codex Figma
+// https://www.figma.com/file/g2yHdGMKnPH04ho4YFkPuJ/Prime-Codex?type=design&node-id=201-215&mode=design&t=TV1N2RPkAGXwE5UU-0
+
+$color: (
+    blue: (
+        default: #0A0547,
+        80: #3B376C,
+        bg: #ECECFC,
+        medium: #4C6894
+    ),
+    gold: (
+        dark: #86752D,
+        darker: #6B5C1E,
+        medium: #BAA54A,
+        light: #DCCC8A,
+        lighter: #F7F5ED
+    ),
+    black: (
+        default: #232323,
+        secondary: #383838,
+        tertiary: #999999,
+        30: rgba(0,0,0,.3)
+    ),
+    white: (
+        default: #ffffff,
+        60: rgba(255,255,255,0.6),
+        10: rgba(255,255,255,0.1),
+    ),
+    grey: (
+        dark: #DFDEDE,
+        light: #FAFAFA,
+        medium: #F6F6F6
+    ),
+    error: (
+        default: red,
+        0: #FBEBEB,
+        100: #D73232,
+    )
+);
+
+// OPTIONAL - if default using color shade
+
+// $variant: (
+//     blue: (
+//         default: map.get($color, blue, 80),
+//     )
+// );
+
+// $color: map.deep-merge($color, $variant);
+
+// OPTIONAL - end
+
+$fontSizes: (
+    header-52: (
+        desktop: (
+            font-family: Optim,
+            font-size: 52,
+            font-weight: 500,
+            line-height: 1,
+        ),
+        mobile: (
+            font-size: 32,
+            line-height: math.div(34, 32)
+        )
+    ),
+    header-42: (
+        desktop: (
+            font-family: Optim,
+            font-size: 42,
+            font-weight: 500,
+            line-height: 1,
+        ),
+        mobile: (
+            font-size: 32,
+        )
+    ),
+    home-banner-title: (
+        desktop: (
+            font-family: Optim,
+            font-size: 42,
+            font-weight: 500,
+            line-height: 1,
+        ),
+        mobile: (
+            font-size: 38,
+        )
+    ),
+    header-38: (
+        desktop: (
+            font-family: Optim,
+            font-size: 38,
+            font-weight: 500,
+            line-height: 1,
+        ),
+        mobile: (
+            font-size: 24,
+        )
+    ),
+    sub-header-20: (
+        desktop: (
+            font-family: var(--font-manrope),
+            font-size: 20,
+            font-weight: 600,
+            line-height: math.div(34, 20),
+        ),
+        mobile: (
+            font-size: 16,
+            line-height: math.div(26, 16)
+        )
+    ),
+    sub-header-18: (
+        desktop: (
+            font-family: var(--font-manrope),
+            font-size: 18,
+            font-weight: 600,
+            line-height: math.div(24, 18),
+        ),
+        mobile: (
+            font-size: 16,
+            line-height: math.div(26, 16)
+        )
+    ),
+    sub-header-16: (
+        desktop: (
+            font-family: var(--font-manrope),
+            font-size: 16,
+            font-weight: 600,
+            line-height: math.div(26, 16),
+        ),
+        mobile: (
+            font-size: 16,
+            line-height: math.div(26, 16)
+        )
+    ),
+    trip-ccard-title: (
+        desktop: (
+            font-family: var(--font-manrope),
+            font-size: 16,
+            font-weight: 600,
+            line-height: math.div(26, 16),
+        ),
+        mobile: (
+            font-size: 14,
+            line-height: math.div(24, 14)
+        )
+    ),
+    sub-header-12: (
+        desktop: (
+            font-family: var(--font-manrope),
+            font-size: 12,
+            font-weight: 600,
+            line-height: math.div(22, 12),
+        ),
+        mobile: (
+            font-size: 14,
+            line-height: math.div(24, 14)
+        )
+    ),
+    starlink-banner: (
+        desktop: (
+            font-family: var(--font-manrope),
+            font-size: 16,
+            font-weight: 600,
+            line-height: math.div(26, 16),
+        ),
+        mobile: (
+            font-size: 12,
+        line-height: math.div(22, 12)
+        )
+    ),
+    sub-header-14: (
+        desktop: (
+            font-family: var(--font-manrope),
+            font-size: 14,
+            font-weight: 600,
+            line-height: math.div(24, 14),
+        ),
+        mobile: (
+            font-size: 14,
+            line-height: math.div(24, 14)
+        )
+    ),
+    paragraph-16: (
+        desktop: (
+            font-family: var(--font-questrial),
+            font-size: 16,
+            font-weight: 400,
+            line-height: math.div(26, 16),
+            letter-spacing: 0.03em
+        ),
+        mobile: (
+            font-size: 12,
+            line-height: math.div(22, 12)
+        )
+    ),
+    trip-card-trip-date: (
+        desktop: (
+            font-family: var(--font-questrial),
+            font-size: 16,
+            font-weight: 400,
+            line-height: math.div(26, 16),
+            letter-spacing: 0.03em
+        ),
+        mobile: (
+            font-size: 14,
+            line-height: math.div(24, 14)
+        )
+    ),
+    paragraph-14: (
+        desktop: (
+            font-family: var(--font-questrial),
+            font-size: 14,
+            font-weight: 400,
+            line-height: math.div(24, 14),
+            letter-spacing: 0.03em
+        ),
+        mobile: (
+            font-size: 12,
+            line-height: math.div(22, 12)
+        )
+    ),
+    home-banner-desc: (
+        desktop: (
+            font-family: Epilogue,
+            font-size: 14,
+            font-weight: 400,
+            line-height: math.div(24, 14),
+            letter-spacing: 0.03em
+        ),
+        mobile: (
+            font-family: var(--font-questrial),
+            font-size: 14,
+            line-height: math.div(24, 14)
+        )
+    ),
+    paragraph-10: (
+        desktop: (
+            font-family: var(--font-questrial),
+            font-size: 10,
+            font-weight: 400,
+            line-height: math.div(20, 10),
+        ),
+        mobile: (
+            font-size: 12,
+            line-height: math.div(22, 12)
+        )
+    ),
+    nav: (
+        desktop: (
+            font-family: var(--font-questrial),
+            font-size: 14,
+            font-weight: 400,
+            line-height: math.div(24, 14),
+            letter-spacing: 0.03em
+        ),
+        mobile: (
+            font-family: optim,
+            font-weight: 500,
+            font-size: 24,
+            line-height: math.div(30, 24)
+        )
+    ),
+    nav-enquire-button: (
+        desktop: (
+            font-family: var(--font-questrial),
+            font-size: 14,
+            font-weight: 400,
+            line-height: math.div(24, 14),
+            letter-spacing: 0.03em
+        ),
+        mobile: (
+            font-size: 16,
+            line-height: math.div(26, 16)
+        )
+    ),
+);

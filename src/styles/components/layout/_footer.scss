@@ -1,0 +1,159 @@
+@use 'sass:math';
+@use '../../_config.scss' as *;
+
+.web-footer {
+    background-color: color(gold, dark);
+
+    @include vwUnit(padding, 72 0, 24 0);
+
+    @include imageRatio(160 121, $maxWidth: true, $className: 'logo');
+
+    &__logo-container {
+        @include vwMobile(margin-bottom, 40);
+    }
+
+    &__footer-menu-container {
+        width: math.div(459, 810) * 100%;
+        color: color(white);
+
+        @media (max-width: mobileStart()) {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    &__footer-menu {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        @include vwUnit(margin-right, -15, 0);
+        @include vwUnit(margin-bottom, 24, 12);
+        @include vwUnit(margin-left, -15, 0);
+    }
+
+    &__footer-menu-item {
+        display: inline-block;
+    }
+
+    &__footer-menu-link {
+        display: inline-block;
+        color: color(white);
+        text-transform: uppercase;
+
+        @include vwUnit(padding, 8 15);
+        @include typo(sub-header-14);
+
+        &:hover {
+            color: color(gold, medium);
+        }
+    }
+
+    &__social-text {
+        display: inline-block;
+        margin: 0;
+        opacity: 0.6;
+        @include vwUnit(margin-right, 20);
+        @include typo(paragraph-14);
+    }
+
+    &__social-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: color(white);
+        text-align: center;
+        vertical-align: middle;
+        border: 1px solid rgba(255,255,255,.1);
+        border-radius: 100px;
+
+        @include vwUnit(width, 38);
+        @include vwUnit(height, 38);
+        @include vwUnit(margin-right, 12);
+        @include vwUnit(line-height, 38);
+
+        &:hover {
+            color: color(gold, medium);
+            border-color: color(gold, medium);
+            background-color: color(white);
+        }
+    }
+
+    &__social-icon {
+        display: inline-block;
+        @include vwUnit(width, 22);
+        @include vwUnit(height, 22);
+    }
+
+    &__footer-info-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: color(white);
+        border-top: 1px solid rgba(255,255,255,.3);
+        @include vwUnit(margin-top, 40, 20);
+        @include vwUnit(padding-top, 40, 20);
+
+        @media (max-width: mobileStart()) {
+            flex-wrap: wrap;
+
+            > * {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+
+    &__footer-info {
+        @include vwMobile(margin-bottom, 36);
+    }
+    
+    &__footer-info-link {
+        display: block;
+        color: color(white);
+
+        @include vwUnit(margin-bottom, 20);
+        @include vwUnit(font-size, 16);
+
+        &:hover {
+            color: color(gold, medium);
+        }
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+
+    &__footer-icon {
+        display: inline-block;
+        opacity: 0.6;
+        @include vwUnit(width, 18);
+        @include vwUnit(height, 18);
+        @include vwUnit(margin-right, 10);
+    }
+
+    &__further-ease-text {
+        margin: 0;
+        opacity: 0.6;
+        @include vwUnit(margin-bottom, 16, 0);
+    }
+
+    @include imageRatio(160 121, 75 65, $maxWidth: true, $className: 'further-ease-logo');
+
+    &__further-ease-logo-container {
+        @include vwMobile(max-width, 75);
+    }
+}
+
+.footer-copyright {
+    background-color: color(gold,darker);
+    @include vwUnit(padding, 18 0, 18 0 75);
+
+    &__text {
+        margin: 0;
+        color: color(white);
+        text-align: center;
+        opacity: 0.6;
+        @include typo(paragraph-14);
+    }
+}

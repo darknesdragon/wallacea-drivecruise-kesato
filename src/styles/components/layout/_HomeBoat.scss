@@ -1,0 +1,122 @@
+@use 'swiper/scss';
+@use 'swiper/scss/effect-fade';
+@use 'swiper/scss/thumbs';
+@use '../../_config.scss' as *;
+
+.home-boat {
+
+    display: flex;
+    flex-wrap: wrap;
+
+    @include vwUnit(margin-top, 60, 40);
+
+    &__swiper-container {
+        flex: 0 0;
+        background-color: color(gold, dark);
+        @include vwDesktop(flex-basis, 705);
+        @include vwDesktop(width, 705);
+
+        @media (max-width: mobileStart()) {
+            flex-basis: 100%;
+            width: 100%;
+        }
+    }
+
+    &__swiper-inner {
+        overflow: hidden;
+    }
+
+    @include imageRatio(705 639, 390 268, $objectFit: cover);
+
+    &__image-container {
+        background-color: color(gold, dark);
+    }
+
+    &__content {
+        position: relative;
+        z-index: 2;
+        flex: 1 0;
+
+        @media (max-width: mobileStart()) {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+
+    &__text-container {
+        @include vwUnit(padding, 36 155 36 76, 32 16 0);
+
+        @media (max-width: mobileStart()) {
+            order: 1;
+            width: 100%;
+        }
+    }
+
+    &__title {
+        text-transform: uppercase;
+        @include vwUnit(margin-bottom, 32);
+        @include typo(header-42);
+    }
+    
+    &__price {
+        @include vwUnit(margin-bottom, 32);
+        @include typo(sub-header-18);
+    }
+    
+    &__price-value {
+        color: color(gold, dark);
+    }
+    
+    &__desc {
+        @include vwUnit(margin-bottom, 32);
+    }
+
+    &__thumb-swiper-container {
+        @include vwUnit(margin-left, -91, 0);
+        @include vwUnit(padding, 0, 16 16 0);
+        @include vwDesktop(max-width, 671);
+
+        @media (max-width: mobileStart()) {
+            flex: 1 0 100%;
+            width: 100%;
+            max-width: calc(100vw - 17px);
+        }
+    }
+
+    &__thumb-swiper {
+
+        .swiper-slide-thumb-active {
+            position: relative;
+
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                z-index: 10;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 4px solid color(gold, medium);
+            }
+        }
+    }
+
+    &--reverse {
+        @extend .home-boat;
+        .home-boat__swiper-container {
+            @include vwUnit(margin-left, -91, 0);
+            @media (min-width: 992px) {
+                order: 1;
+            }
+        }
+        .home-boat__text-container {
+            @include vwUnit(padding, 36 76 36 155, 32 16 0);
+        }
+        .home-boat__thumb-swiper-container {
+            @include vwUnit(margin-right, -91, 0);
+            @include vwUnit(margin-left, 155, 0);
+        }
+    }
+
+}

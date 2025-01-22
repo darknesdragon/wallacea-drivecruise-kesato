@@ -1,0 +1,130 @@
+@use "../../_config.scss" as *;
+
+@mixin buttonVariation($text, $bg) {
+    
+    color: $text;
+    background-color: $bg;
+    border-color: $bg;
+
+    &:hover {
+        color: $bg;
+        background-color: $text;
+    }
+
+    &:active, &:focus, &:active:focus {
+        color: $text;
+        background-color: $bg;
+    }
+}
+
+.app-button {
+    display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 1px solid;
+    box-shadow: 0 0 0;
+    vertical-align: middle;
+
+    @include vwUnit(padding, 12 16, 8 12);
+    @include typo(sub-heading-16);
+
+    &[disabled] {
+        color: color(grey, dark);
+        background-color: color(grey, light);
+        border-color: color(grey, light);
+        cursor: not-allowed;
+    }
+
+    & + & {
+        @include vwUnit(margin-left, 12);
+    }
+}
+
+.app-button-primary {
+
+    &--gold {
+        @include buttonVariation(color(white), color(gold, medium));
+
+    }
+
+    &--white {
+        @include buttonVariation(color(black), color(white));
+
+    }
+}
+
+.app-button-navigation {
+
+    @include vwUnit(padding, 8 12, 19 12);
+    @include typo(nav-enquire-button);
+
+    &--gold {
+        @extend .app-button-navigation;
+        color: color(white);
+        background-color: color(gold, dark);
+        border-color: color(gold, dark);
+
+        &:hover {
+            color: color(gold, dark);
+            background-color: color(white);
+        }
+
+        &:active, &:focus, &:active:focus {
+            color: color(white);
+            background-color: color(gold, darker);
+            border-color: color(gold, darker);
+        }
+
+    }
+
+}
+
+.app-button-secondary {
+    &--gold {
+        @include buttonVariation(color(gold, medium), color(white));
+        border-color: color(gold, medium);
+    }
+    &--white {
+        @include buttonVariation(color(white), transparent);
+        border-color: color(white);
+
+        &:hover {
+            color: color(black);
+        }
+    }
+}
+
+.app-button-tertiary {
+    border: 0;
+
+    @include imageRatio(14, $className: 'icon');
+
+    &__icon-container {
+        display: inline-block;
+        vertical-align: middle;
+
+        @include vwUnit(width, 14);
+        @include vwUnit(margin-top, -4);
+        @include vwUnit(margin-left, 12);
+
+        @include transition(all .3s ease);
+    }
+
+    &:hover {
+        .app-button-tertiary__icon-container {
+            @include vwUnit(margin-left, 16);
+        }
+    }
+
+    &--gold {
+        @extend .app-button-tertiary;
+        color: color(gold, medium);
+        background-color: transparent;
+    }
+    &--white {
+        @extend .app-button-tertiary;
+        color: color(white);
+        background-color: transparent;
+    }
+}

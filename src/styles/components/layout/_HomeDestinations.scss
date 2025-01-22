@@ -1,0 +1,243 @@
+@use "sass:math";
+@use "swiper/scss";
+@use "swiper/scss/scrollbar";
+@use 'swiper/scss/effect-creative';
+@use '../../_config.scss' as *;
+
+.home-destinations {
+    position: relative;
+    overflow: hidden;
+
+    @include vwUnit(padding, 100 0, 80 0);
+
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: math.div(516, 736) * 100%;
+        background-color: color(black);
+
+        @media (max-width: mobileStart()) {
+            height: 100%;
+        }
+    }
+
+    .swiper,
+    .swiper-wrapper,
+    .swiper-slide {
+        overflow: visible;
+    }
+
+    .swiper-slide {
+        
+        @media (min-width: 992px) {
+            &:hover {
+                z-index: 5 !important;
+                .home-destinations__image-wrapper {
+                    @include transform(scale(1.1,1.1));
+                }
+
+                .home-destinations__text-container {
+                    background-color: color(black, 30);
+                }
+                
+                .home-destinations__additional-info {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    .swiper-slide-active {
+        @media (max-width: mobileStart()) {
+            .home-destinations__additional-info {
+                opacity: 1;
+            }
+        }
+    }
+
+    .swiper-scrollbar {
+        position: relative;
+        height: 4px;
+        background: transparent;
+        @include vwUnit(bottom, -52, -30);
+
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: color(white);
+            @include transform(translateY(-50%));
+        }
+    }
+    
+    .swiper-scrollbar-drag {
+        background: color(gold, medium);
+        border-radius: 0;
+    }
+
+    &__swiper-container {
+        position: relative;
+        z-index: 1;
+        width: math.div(965, 1440) * 100%;
+        margin-left: auto;
+        
+        &:hover {
+            z-index: 2;
+        }
+
+        @media (max-width: mobileStart()) {
+            width: 100%;
+        }
+    }
+
+    &__image-wrapper {
+        position: relative;
+        @include vwUnit(padding-right, 10);
+        @include transition(all .3s ease);
+    }
+
+    @include imageRatio(435 523, 300 380);
+
+    &__text-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: color(white);
+        background-color: transparent;
+
+        
+        @include vwUnit(padding, 56 36, 28 16);
+        @include transition(all .3s ease);
+
+        @media (max-width: mobileStart()) {
+            background-color: color(black, 30);
+        }
+    }
+
+    &__start-from {
+        text-transform: uppercase;
+        @include vwUnit(margin-bottom, 12, 4);
+    }
+
+    &__title {
+        @include vwUnit(margin-bottom, 32, 16);
+        @include typo(header-38);
+    }
+
+    &__additional-info {
+
+        opacity: 0;
+        @include transition(all .3s ease);
+    }
+
+    &__info-container {
+        display: flex;
+        align-items: center;
+        @include vwUnit(margin-top, 20, 16);
+    }
+
+    &__info-icon {
+        color: color(gold, dark);
+        text-align: center;
+        background-color: color(white);
+        border-radius: 100px;
+        @include vwUnit(width, 44, 32);
+        @include vwUnit(height, 44, 32);
+        @include vwUnit(margin-right, 12);
+        @include vwUnit(line-height, 44, 32);
+    }
+    
+    &__icon {
+        display: inline-block;
+        @include vwUnit(width, 22, 16);
+        @include vwUnit(height, 22, 16);
+    }
+
+    &__info-text {
+        margin: 0;
+        @include typo(sub-header-18);
+    }
+
+    &__button {
+        @include vwUnit(margin-top, 32, 24);
+    }
+
+    &__info {
+        position: absolute;
+        z-index: 2;
+        bottom: math.div(177, 736) * 100%;
+        width: 100%;
+
+        @include vwMobile(margin-bottom, 28);
+
+        @media (max-width: mobileStart()) {
+            position: relative;
+        }
+    }
+
+    &__swiper-navigation {
+        display: none;
+
+        @include vwUnit(margin-top, 80, 0);
+
+        @media (min-width: 992px) {
+            display: block;
+        }
+    }
+
+    &__swiper-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        color: color(gold, light);
+        background-color: transparent;
+        border: 1px solid color(gold, light);
+        border-radius: 100px;
+
+        @include vwUnit(width, 52, 32);
+        @include vwUnit(height, 52, 32);
+
+        & + & {
+            @include vwUnit(margin-left, 16);
+        }
+
+        &:hover {
+            color: color(white);
+            background-color: color(gold, dark);
+            border-color: color(gold, dark);
+        }
+        &[disabled] {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        &--prev {
+            @extend .home-destinations__swiper-button;
+            .home-destinations__swiper-navigation-icon {
+                @include transform(rotate(180deg));
+            }
+        }
+        
+
+        &--next {
+            @extend .home-destinations__swiper-button;
+        }
+    }
+
+    .home-section__title {
+        color: color(white);
+    }
+}

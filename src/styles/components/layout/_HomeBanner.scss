@@ -1,0 +1,56 @@
+@use '../../_config.scss' as *;
+
+.home-banner {
+
+    &__image-container {
+        position: relative;
+        min-height: 500px;
+        overflow: hidden;
+
+        @include vwUnit(height, 750, 844);
+
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,.5);
+        }
+    }
+
+    &__text-container {
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        width: 100%;
+        color: color(white);
+        text-align: center;
+    }
+
+    &__title {
+        font-family: optim;
+        text-transform: uppercase;
+
+        @include vwUnit(margin-bottom, 24);
+        @include typo(home-banner-title);
+    }
+    
+    &__desc {
+        font-family: Epilogue;
+
+        @include typo(home-banner-desc);
+    }
+
+}
+
+.video-item {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 150%;
+    @include transform(translateY(-50%));
+}

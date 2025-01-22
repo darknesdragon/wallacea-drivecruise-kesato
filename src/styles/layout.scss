@@ -1,0 +1,56 @@
+// main Bootstrap Module
+@use 'config/_init-bootstrap.scss';
+
+@use 'sass:map';
+@use 'sass:math';
+@use '_config.scss' as *;
+
+@font-face {
+    font-family: optim;
+    src: url('/fonts/Optim Regular.ttf');
+    font-display: swap;
+}
+
+
+// |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|
+// | Timedoor New Standard                   |
+// |_________________________________________|
+
+// --------------------------------------- 
+// root font-size variable -- start 
+// --------------------------------------- 
+
+:root {
+
+    @include colorVar();
+    @include fontVar();
+}
+
+// --------------------------------------- 
+// root font-size variable -- end 
+// --------------------------------------- 
+
+// --------------------------------------- 
+// ratio-item class -- start 
+// --------------------------------------- 
+
+.ratio-item {
+    @extend %ratioItem;
+}
+
+// --------------------------------------- 
+// ratio-item class -- end 
+// --------------------------------------- 
+
+// |‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾|
+// | CUSTOM CODE START HERE                  |
+// |_________________________________________|
+
+body {
+    @include typo(paragraph-16);
+}
+
+a, button {
+    text-decoration: none;
+    @include transition(all .3s ease);
+}

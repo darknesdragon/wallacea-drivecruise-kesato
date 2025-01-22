@@ -1,0 +1,80 @@
+@use 'sass:math';
+@use 'sass:map';
+@use '../_config.scss' as *;
+
+.home-section {
+    @include vwUnit(padding, 100 0, 80 0);
+
+    &__title {
+        text-transform: uppercase;
+        margin: 0;
+        @include typo(header-52);
+
+        &:before {
+            content: '';
+            display: block;
+            border-bottom: 1px solid color(gold, dark);
+
+            @include vwUnit(margin-bottom, 32, 24);
+            @include vwUnit(width, 48);
+        }
+
+        &--centered {
+            @extend .home-section__title;
+            text-align: center;
+
+            &:before {
+                margin-right: auto;
+                margin-left: auto;
+            }
+        }
+
+    }
+}
+
+.home-trips {
+    background-color: color(grey, light);
+
+    &__title {
+        @include vwUnit(margin-bottom, 60, 40);
+    }
+
+    &__footer {
+        text-align: center;
+
+        @include vwUnit(margin-top, 60, 40);
+    }
+}
+
+.home-faq {
+
+    @media (max-width: mobileStart()) {
+        text-align: center;
+    }
+
+    &__title {
+        @media (max-width: mobileStart()) {
+            &:before {
+                margin-right: auto;
+                margin-left: auto;
+            }
+        }
+    }
+
+    &__desc {
+        @include vwUnit(margin-top, 40, 20);
+    }
+    &__button {
+        @include vwUnit(margin-top, 40, 20);
+
+        @media (min-width: 992px) {
+            padding-top: 0;
+            padding-left: 0;
+        }
+    }
+
+    &__accordion-container {
+        text-align: left;
+        @include vwMobile(margin-top, 40);
+    }
+}

@@ -1,0 +1,52 @@
+@use '../../_config.scss' as *;
+
+.faq-accordion {
+
+    @include imageRatio(16, $maxWidth: true, $className: 'button-caret');
+
+    &__button-caret-container {
+        position: absolute;
+        top: 50%;
+        color: color(gold, dark);
+
+        @include vwUnit(right, 32, 20);
+        @include transform(translateY(-50%) rotate(-90deg));
+        @include transition(all .3s ease);
+    }
+
+    .accordion-item {
+        border-color: color(grey, dark);
+    }
+    
+    .accordion-button {
+        color: color(gold, dark);
+        background-color: color(gold, lighter);
+        border-color: color(grey, dark);
+
+        @include vwUnit(padding, 18 64 18 32, 14 40 14 20);
+        @include typo(sub-header-18);
+
+        &:after {
+            content: none;
+        }
+
+        &:active, &:focus, &:active:focus {
+            outline: none;
+            box-shadow: 0 0 0;
+        }
+
+        &.collapsed {
+            color: color(black);
+            background-color: color(white);
+
+            .faq-accordion__button-caret-container {
+                @include transform(translateY(-50%) rotate(90deg));
+            }
+
+        }
+    }
+
+    .accordion-body {
+        @include vwUnit(padding, 24 32, 14 20);
+    }
+}

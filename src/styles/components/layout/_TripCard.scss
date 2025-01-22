@@ -1,0 +1,254 @@
+@use 'sass:math';
+@use '../../_config.scss' as *;
+
+.trip-card {
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-color: color(white);
+    border: 1px solid color(grey, dark);
+    box-shadow: 0 2px 10px rgba(0,0,0,.05);
+    border-radius: 10px;
+
+    @include vwUnit(margin-top, 28, 16);
+
+    @media (max-width: mobileStart()) {
+        flex-wrap: wrap;
+    }
+
+    &__seats-left {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: color(error, 100);
+        background-color: color(error, 0);
+
+        @include vwUnit(padding, 4 12);
+        @include vwUnit(border-bottom-left-radius, 20);
+        @include typo(sub-header-14);
+        @include vwMobile(font-size, 12);
+    }
+
+    &__information-container {
+        flex: 0 0;
+        @include vwUnit(padding, 24 32, 35 20 20);
+
+        &--info {
+            @extend .trip-card__information-container;
+            flex-basis: math.div(727, 1063) * 100%;
+            border-right: 1px solid color(grey, dark);
+            @media (max-width: mobileStart()) {
+                flex-basis: 100%;
+                border-right: 0;
+                border-bottom: 1px solid color(grey, dark);
+            }
+            
+        }
+        
+        &--price {
+            @extend .trip-card__information-container;
+            flex-basis: math.div(336, 1063) * 100%;
+            @media (max-width: mobileStart()) {
+                flex-basis: 100%;
+            }
+        }
+    }
+
+    &__info-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include vwUnit(margin-bottom, 20, 12);
+
+        @media (max-width: mobileStart()) {
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+    }
+
+    &__title {
+        margin: 0;
+        @include vwMobile(margin-bottom, 5);
+        @include typo(sub-header-20);
+
+        @media (max-width: mobileStart()) {
+            flex: 1 0 100%;
+        }
+    }
+
+    &__ships-code {
+        @media (max-width: mobileStart()) {
+            flex: 1 0 100%;
+        }
+    }
+
+    &__ships-info {
+        display: inline-block;
+        margin: 0;
+
+        &--name {
+            @extend .trip-card__ships-info;
+            color: color(gold, dark);
+            border-right: 1px solid color(grey, dark);
+
+            @include vwUnit(margin-right, 8);
+            @include vwUnit(padding-right, 8);
+            @include typo(sub-header-16);
+        }
+    }
+
+    &__info-content {
+        display: flex;
+        align-items: center;
+        @include vwUnit(gap, 20, 0);
+
+        @include vwMobile(padding, 12 16);
+
+        @media (max-width: mobileStart()) {
+            flex-wrap: wrap;
+            border: 1px solid color(grey, dark);
+        }
+    }
+
+    &__destination-container {
+        position: relative;
+        flex: 0 1 33.33%;
+        border: 1px solid color(grey, dark);
+        border-radius: 4px;
+
+        @include vwUnit(padding, 12 16, 0);
+
+        @media (max-width: mobileStart()) {
+            flex-basis: 50%;
+            border: 0;
+        }
+
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border: 1px solid color(gold, dark);
+            border-radius: 100px;
+
+            @include vwUnit(top, 17, auto);
+            @include vwUnit(right, -28, auto);
+            @include vwMobile(bottom, -16);
+
+            @media (max-width: mobileStart()) {
+                left: 0;
+            }
+        }
+
+        &:last-child {
+            text-align: right;
+
+            &:before {
+                right: auto;
+                
+                @include vwUnit(left, -28, auto);
+
+                @media (max-width: mobileStart()) {
+                    right: 0;
+                }
+
+            }
+        }
+
+        &--nights {
+            @extend .trip-card__destination-container;
+            position: relative;
+            text-align: center;
+            border: 0;
+
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                width: auto;
+                height: 0;
+                border: 1px dashed color(gold, dark);
+
+                @include vwUnit(top, 22, 10);
+                @include vwUnit(right, 8);
+                @include vwUnit(left, 8);
+
+                @media (max-width: mobileStart()) {
+
+                }
+            }
+
+            @media (max-width: mobileStart()) {
+                flex: 1 0 100%;
+                order: 1;
+            }
+        }
+    }
+
+    &__destination-name {
+        margin: 0;
+        @include typo(trip-ccard-title);
+    }
+
+    &__destination-date {
+        margin: 0;
+        color: color(black, tertiary);
+
+        @include typo(trip-card-trip-date);
+    }
+
+    @include imageRatio(20, $maxWidth: true, $className: 'icon');
+
+    &__icon-container {
+        color: color(gold, dark);
+    }
+
+    &__destination-nights {
+        margin: 0;
+        color: color(black, tertiary);
+        @include typo(sub-header-16);
+    }
+
+    &__starts-from {
+        margin: 0;
+        color: color(black, tertiary);
+    }
+
+    &__price {
+        margin: 0;
+        color: color(black, secondry);
+        @include typo(sub-header-20);
+    }
+
+    &__price-per-unit {
+        @include typo(sub-header-18);
+    }
+
+    &__price-crossed {
+        color: color(black, tertiary);
+        text-decoration: line-through;
+
+        @include typo(paragraph-16);
+    }
+
+    &__discount-tag {
+        color: color(white);
+        background-color: color(blue, medium);
+        border-radius: 100px;
+        @include vwUnit(padding, 2 8);
+        @include typo(sub-header-14);
+    }
+
+    &__cta-container {
+        @include vwUnit(margin-top, 18, 12);
+
+        @media (max-width: mobileStart()) {
+            display: flex;
+
+            > * {
+                flex: 1 0;
+            }
+        }
+    }
+}

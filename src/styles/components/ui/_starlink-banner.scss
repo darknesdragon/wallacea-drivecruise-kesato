@@ -1,0 +1,88 @@
+@use "../../_config.scss" as *;
+
+.starlink-banner {
+    position: relative;
+    color: color(white);
+    overflow: hidden;
+    background-color: color(gold, dark);
+    @include typo(starlink-banner);
+
+    @media (max-width: mobileStart()) {
+        position: fixed;
+        z-index: 1000;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    
+    &__container {
+        margin: 0 auto;
+
+        @include vwUnit(width, 644, auto);
+        @include vwUnit(padding, 12.5 16 13.5, 7 50 7 16);
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            border-bottom: 1px solid color(gold, medium);
+            // border-bottom: 1px solid red;
+            @include transform(translateY(-50%));
+        }
+    }
+
+    &__text {
+        position: relative;
+        margin: 0;
+        background-color: color(gold, dark);
+        @include vwUnit(padding-right, 24);
+        @include vwMobile(flex-basis, 200);
+    }
+    
+    &__link {
+        display: inline-block;
+        background-color: color(gold, dark);
+        position: relative;
+        @include vwUnit(padding-left, 24);
+
+        &:hover {
+            .starlink-banner__link-text {
+                color: color(gold, medium);
+                border-bottom-color: color(gold, medium);
+            }
+        }
+    }
+
+    &__link-text {
+        display: inline-block;
+        color: color(white);
+        border-bottom: 1px solid color(white);
+        @include vwUnit(padding-bottom, 0.5);
+        @include transition(all .3s ease);
+    }
+
+    &__close-button {
+        position: absolute;
+        top: 50%;
+        padding: 0;
+        color: color(white);
+        background-color: transparent;
+        border: 0;
+
+        @include vwUnit(right, 16);
+        @include transform(translateY(-50%));
+
+        &:hover {
+            color: color(gold, medium);
+        }
+    }
+}

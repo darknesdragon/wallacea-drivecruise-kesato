@@ -1,0 +1,392 @@
+@use '../../_config.scss' as *;
+
+.web-header {
+
+    &__navbar {
+        flex-wrap: wrap;
+        position: fixed;
+        padding: 0;
+
+        @include vwDesktop(top, 51.8);
+
+        @include transition(all .3s ease);
+
+        @media (max-width: mobileStart()) {
+            top: 0;
+        }
+
+        &--scrolled {
+            @extend .web-header__navbar;
+            top: 0;
+            background-color: color(white);
+
+            .hamburger-line {
+                background: color(gold, dark);
+            }
+
+            @media (min-width: 992px) {
+                
+                .web-header__currency {
+                    color: color(black);
+                }
+                
+                .web-header__google0-rating {
+                    color: color(black);
+                }
+                
+                .web-header__google-rating-count {
+                    color: color(black, tertiary);
+                }
+
+                .web-header__info-container {
+                    border-color: color(grey, medium);
+                }
+
+                .web-header__nav-link {
+                    color: color(gold, dark);
+                    &:hover {
+                        color: color(gold, medium);
+                    }
+                }
+                
+            }
+        }
+    }
+
+    &__navbar-top {
+        width: 100%;
+        @include vwUnit(padding, 16 0, 12 0);
+        
+        > .container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            width: 100%;
+        }
+    }
+
+    @include imageRatio(58 44, $maxWidth: true, $className: 'logo');
+    
+    &__logo-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &__language-container {
+        display: flex;
+        align-items: center;
+        flex: 0 0 30%;
+
+        @media (max-width: mobileStart()) {
+            display: none;
+        }
+    }
+
+    &__info-container {
+        flex: 0 0;
+        border-right: 1px solid color(grey, medium);
+
+        @include vwUnit(flex-basis, 34);
+        @include vwUnit(margin-right, 14);
+        @include vwUnit(padding-right, 14);
+
+        &:last-child {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        &--google {
+            @extend .web-header__info-container;
+            display: flex;
+            align-items: center;
+            flex: 1 0 auto;
+
+            @media (max-width: mobileStart()) {
+                justify-content: center;
+                flex: 0 0 auto;
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        @media (max-width: mobileStart()) {
+            border: 0;
+        }
+    }
+
+    @include imageRatio(20, $maxWidth: true, $className: 'flag');
+
+    &__flag-container {
+        display: block;
+    }
+
+    &__currency {
+        margin: 0;
+        color: color(white);
+        @include typo(paragraph-14);
+    }
+
+    @include imageRatio(20, $maxWidth: true, $className: 'google-logo');
+
+    &__google-logo-container {
+        flex: 0 0;
+        @include vwUnit(flex-basis, 20);
+        @include vwUnit(margin-right, 4);
+    }
+    
+    &__google-text {
+        margin: 0;
+    }
+    
+    &__google-rating {
+        color: color(white);
+        vertical-align: middle;
+        @include vwUnit(margin-right, 4);
+        @include typo(sub-header-12);
+    }
+
+    &__google-rating-count {
+        color: color(white);
+        display: inline-block;
+        vertical-align: middle;
+        @include vwUnit(margin-top, 2);
+        @include typo(paragraph-10);
+    }
+
+    &__cta-container {
+        @media (max-width: mobileStart()) {
+            display: none;
+        }
+    }
+
+    &__navbar-bottom {
+        width: 100%;
+        background-color: color(white, 10);
+    }
+
+    &__offcanvas-google-rating {
+        color: color(white);
+        @media (min-width: 992px) {
+            displaY: none;
+        }
+    }
+
+    &__offcanvas-navigation-button {
+        margin: 0 -1rem -1rem;
+        text-align: center;
+
+        @include vwUnit(margin-top, 20);
+
+        @media (min-width: 992px) {
+            displaY: none;
+        }
+    }
+
+    &__nav-link {
+        color: color(white);
+        text-transform: uppercase;
+        @include typo(nav);
+
+        &:hover {
+            color: color(gold, dark);
+        }
+        
+        @media (max-width: mobileStart()) {
+            &:hover, &:active, &:focus, &:active:focus {
+                color: color(gold, light);
+            }
+        }
+    }
+
+    .container {
+        flex-wrap: wrap;
+    }
+
+    .navbar-nav {
+
+        .nav-link {
+            
+            @include vwUnit(padding, 9 20, 14 18);
+        }
+
+        @media (max-width: mobileStart()) {
+            flex: 1 0;
+        }
+    }
+
+    .navbar-toggler {
+        border: 0;
+        outline: 0;
+        
+        @include vwUnit(padding, 10 5);
+        
+        &:active, &:focus, &:active:focus {
+            border: 0;
+            box-shadow: 0 0 0;
+            outline: 0;
+        }
+    }
+
+    .btn-close {
+        margin: 0;
+        width: auto;
+        height: auto;
+        color: color(white);
+        background-image: none;
+        opacity: 1;
+    }
+
+    .offcanvas {
+        @media (max-width: mobileStart()) {
+            background-color: color(gold, darker);
+        }
+    }
+
+    .offcanvas-header {
+        position: relative;
+    }
+
+    .offcanvas-body {
+        @media (max-width: mobileStart()) {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    
+}
+
+// --------------------------------------------
+// HAMBURGER MENU ANIMATION -- START
+// --------------------------------------------
+
+$hamburgerMenu_height : 1px;
+$hamburgerMenu_margin : 8px;
+$hamburgerMenu_distance : $hamburgerMenu_height + $hamburgerMenu_margin;
+
+.hamburger-line {
+    display: block;
+    width: 30px;
+    // box-shadow: 0 2px 10px 0 rgba(0,0,0,0.3);
+    border-radius: 3px;
+    height: $hamburgerMenu_height;
+    background: color(white);
+    transition: all .3s;
+    position: relative;
+}
+
+.hamburger-line + .hamburger-line {
+    margin-top: $hamburgerMenu_margin;
+}
+
+.navbar-toggler .hamburger-line:nth-child(1) {
+    animation: ease .7s top forwards;
+}
+
+.navbar-toggler .hamburger-line:nth-child(1) {
+    animation: ease .7s top-2 forwards;
+}
+
+.navbar-toggler .hamburger-line:nth-child(2) {
+    animation: ease .7s scaled forwards;
+}
+
+.navbar-toggler .hamburger-line:nth-child(2) {
+    animation: ease .7s scaled-2 forwards;
+}
+
+.navbar-toggler .hamburger-line:nth-child(3) {
+    animation: ease .7s bottom forwards;
+}
+
+.navbar-toggler .hamburger-line:nth-child(3) {
+    animation: ease .7s bottom-2 forwards;
+}
+
+@keyframes top {
+    0% {
+        top: 0;
+        transform: rotate(0);
+    }
+    50% {
+        top: $hamburgerMenu_distance;
+        transform: rotate(0);
+    }
+    100% {
+        top: $hamburgerMenu_distance;
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes top-2 {
+    0% {
+        top: $hamburgerMenu_distance;
+        transform: rotate(45deg);
+    }
+    50% {
+        top: $hamburgerMenu_distance;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 0;
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes bottom {
+    0% {
+        bottom: 0;
+        transform: rotate(0);
+    }
+    50% {
+        bottom: $hamburgerMenu_distance;
+        transform: rotate(0);
+    }
+    100% {
+        bottom: $hamburgerMenu_distance;
+        transform: rotate(135deg);
+    }
+}
+
+@keyframes bottom-2 {
+    0% {
+        bottom: $hamburgerMenu_distance;
+        transform: rotate(135deg);
+    }
+    50% {
+        bottom: $hamburgerMenu_distance;
+        transform: rotate(0);
+    }
+    100% {
+        bottom: 0;
+        transform: rotate(0);
+    }
+}
+
+@keyframes scaled {
+    50% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+@keyframes scaled-2 {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+// --------------------------------------------
+// HAMBURGER MENU ANIMATION -- END
+// --------------------------------------------
