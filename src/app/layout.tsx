@@ -7,10 +7,6 @@ import "@styles/layout.scss"
 // COMPONENT MANAGEMENT -- START
 // ----------------------------------------------
 
-import StarlinkBanner from "@ui/StartlinkBanner"
-import Header from "@layout/header"
-import Footer from "@layout/footer"
-
 // ----------------------------------------------
 // COMPONENT MANAGEMENT -- END
 // ----------------------------------------------
@@ -63,10 +59,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${questrialFont.variable} ${epilogueFont.variable} ${manropeFont.variable}`}>
-                <StarlinkBanner />
-                <Header />
                 {children}
-                <Footer />
             </body>
         </html>
     );

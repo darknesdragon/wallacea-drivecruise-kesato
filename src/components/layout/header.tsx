@@ -3,8 +3,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-// import { Offcanvas } from "bootstrap";
-
 import AppButton from "@ui/AppButton";
 import IconCLose from "@icon/close";
 
@@ -52,10 +50,6 @@ const Header = () => {
     const logoImage = scrolled? '/images/logo-gold.svg' : '/images/logo-white.svg';
 
     useEffect( () => {
-        // const offcanvasElement = document.querySelector('.offcanvas');
-        // if (offcanvasElement) {
-        //     new Offcanvas(offcanvasElement);
-        // }
         window.addEventListener('scroll', () => {
             if ( window.scrollY > 30 ) {
                 setScrolled(true);

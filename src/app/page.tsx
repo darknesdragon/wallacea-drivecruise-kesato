@@ -4,6 +4,10 @@ import { useEffect } from "react";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import StarlinkBanner from "@ui/StartlinkBanner"
+import Header from "@layout/header"
+import Footer from "@layout/footer"
+
 import AppButton from "@ui/AppButton";
 import HomeBanner from "@layout/HomeBanner";
 import HomeBoat from "@layout/HomeBoat";
@@ -261,7 +265,9 @@ const Testing = () => {
     }, []);
 
     return (
-        <div className="page-banner">
+        <div className="home-page">
+            <StarlinkBanner />
+            <Header />
             <HomeBanner video_url={bannerData.video_url} title={bannerData.title} desc={bannerData.desc} />
             <section className="home-section">
                 <div className="container">
@@ -309,6 +315,7 @@ const Testing = () => {
                     </div>
                 </div>
             </section>
+            <Footer />
         </div>
     )
 }
