@@ -175,11 +175,8 @@ const faqData = [
 
 const Testing = () => {
 
-    const fadeUp = (elements: string | HTMLElement[]) => {
-
-        const target = typeof elements === 'string' ? Array.from(document.querySelectorAll(elements)) : elements;
-
-        target.map( element => {
+    const fadeUp = (elements: HTMLElement[]) => {
+        elements.map( element => {
             gsap.fromTo(
                 element,
                 { 
@@ -198,6 +195,26 @@ const Testing = () => {
                 }
             )
         })
+    };
+
+    const fadeUpEl = (element: string) => {
+        gsap.fromTo(
+            element,
+            { 
+                y: 100, 
+                autoAlpha: 0 
+            },
+            { 
+                y: 0, 
+                autoAlpha: 1, 
+                duration: 1, 
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top-=100 80%',
+                    // markers: true
+                }
+            }
+        )
     };
 
     const boatLoop = boatData.map( (boat, index) => {
@@ -228,13 +245,20 @@ const Testing = () => {
     });
 
     useEffect( () => {
+
+        async function loadBootstrap() {
+            await import('bootstrap');
+        }
+    
+        loadBootstrap();
+
         const pageTitles = Array.from(document.querySelectorAll('[class^=home-section__title]')) as HTMLElement[];
         fadeUp(pageTitles);
-        fadeUp('.home-trips__footer');
-        fadeUp('.home-faq__desc');
-        fadeUp('.home-faq__button-container');
-        fadeUp('.home-faq__accordion-container');
-    });
+        fadeUpEl('.home-trips__footer');
+        fadeUpEl('.home-faq__desc');
+        fadeUpEl('.home-faq__button-container');
+        fadeUpEl('.home-faq__accordion-container');
+    }, []);
 
     return (
         <div className="page-banner">

@@ -65,10 +65,8 @@ export default function RootLayout({
             <body className={`${questrialFont.variable} ${epilogueFont.variable} ${manropeFont.variable}`}>
                 <StarlinkBanner />
                 <Header />
-                <div className="js__smooth-scroll">
-                    {children}
-                    <Footer />
-                </div>
+                {children}
+                <Footer />
             </body>
         </html>
     );
